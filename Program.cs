@@ -18,26 +18,57 @@
 
 void FillArray(string[] array)
 {
-for (int i = 0; i < array.Length; i++)
-{
-    array[i] = Console.ReadLine();
-}
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = Console.ReadLine();
+    }
 }
 void PrintArray(string[] array)
 {
-for (int i = 0; i < array.Length; i++)
-{
-    Console.Write(" " + array[i]);
-}
+    Console.Write("[ ");
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+    Console.Write("] ");
 }
 
 void SortArray(string[] array)
 {
-for (int i = 0; i < array.Length; i++)
-{
-    if (array[i].Length <= 3)
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        Console.Write(array[i] + " ");
+        if (array[i].Length <= 3)
+        {
+            count++;
+        }
+    }
+    string[] newArray = new string[count];
+    Console.Write("[ ");
+    for (int i = 0; i < newArray.Length; i++)
+    {
+        if (array[i].Length <= 3)
+        {
+            count++;
+            newArray[i] = array[i];
+            Console.Write(newArray[i] + " ");
+        }
+    }
+     Console.Write("]");
+    if (count == 0)
+    {
+        Console.WriteLine();
+        Console.Write("В данном массиве нет элементов меньше или равных трем"); 
     }
 }
-}
+
+int size = 6;
+string[] array = new string[size];
+Console.WriteLine("Введите элементы сомволов размером 6 через Enter :");
+FillArray(array);
+Console.WriteLine("Введенный пользователем массив");
+PrintArray(array);
+Console.WriteLine();
+Console.WriteLine("Новый массив в котором элементы меньше или равны трем:");
+SortArray(array);
+
